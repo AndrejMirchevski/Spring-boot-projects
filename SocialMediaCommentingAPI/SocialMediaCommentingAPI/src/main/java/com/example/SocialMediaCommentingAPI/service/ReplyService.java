@@ -3,6 +3,7 @@ package com.example.SocialMediaCommentingAPI.service;
 import com.example.SocialMediaCommentingAPI.dto.CreateReplyRequest;
 import com.example.SocialMediaCommentingAPI.entity.Comment;
 import com.example.SocialMediaCommentingAPI.entity.Reply;
+import com.example.SocialMediaCommentingAPI.exception.BusinessConflictException;
 import com.example.SocialMediaCommentingAPI.repository.CommentRepository;
 import com.example.SocialMediaCommentingAPI.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class ReplyService {
     public Reply createReply(Long commentId, CreateReplyRequest request){
         Comment comment = commentService.getComment(commentId);
         if (!comment.getPost().getId().equals(request.getPostId())){
-            throw new RuntimeException("reply must belong to the same post as the comment (409)");
+            throw new BusinessConflictException("reply must belong to the same post as the comment");
         }
 
         Reply reply = new Reply();

@@ -3,6 +3,7 @@ package com.example.SocialMediaCommentingAPI.service;
 import com.example.SocialMediaCommentingAPI.dto.CreateCommentRequest;
 import com.example.SocialMediaCommentingAPI.entity.Comment;
 import com.example.SocialMediaCommentingAPI.entity.Post;
+import com.example.SocialMediaCommentingAPI.exception.ResourceNotFoundException;
 import com.example.SocialMediaCommentingAPI.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -37,7 +38,7 @@ public class CommentService {
     //Get single comment
     public Comment getComment(Long id){
         return commentRepository.findById(id).
-                orElseThrow(() -> new RuntimeException("Comment by that id is not found"));
+                orElseThrow(() -> new ResourceNotFoundException("Comment by id " + id + " is not found"));
     }
 
     //Hide a comment

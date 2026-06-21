@@ -1,6 +1,7 @@
 package com.example.SocialMediaCommentingAPI.service;
 
 import com.example.SocialMediaCommentingAPI.entity.Post;
+import com.example.SocialMediaCommentingAPI.exception.ResourceNotFoundException;
 import com.example.SocialMediaCommentingAPI.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,6 @@ public class PostService {
 
     public Post getPostById(Long id){
         return postRepository.findById(id).
-                orElseThrow(() -> new RuntimeException("missing post by id: " + id));
+                orElseThrow(() -> new ResourceNotFoundException("missing post by id: " + id));
     }
 }
