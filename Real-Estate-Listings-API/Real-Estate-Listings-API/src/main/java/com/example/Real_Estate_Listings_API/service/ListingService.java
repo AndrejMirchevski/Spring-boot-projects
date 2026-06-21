@@ -11,6 +11,7 @@ import com.example.Real_Estate_Listings_API.exception.BuisnessInvariantException
 import com.example.Real_Estate_Listings_API.exception.RecourseNotFoundException;
 import com.example.Real_Estate_Listings_API.repository.InquiryRepository;
 import com.example.Real_Estate_Listings_API.repository.ListingRepository;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
