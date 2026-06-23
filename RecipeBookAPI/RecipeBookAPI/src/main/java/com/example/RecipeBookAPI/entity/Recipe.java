@@ -33,10 +33,10 @@ public class Recipe {
     @ElementCollection
     private List<String> steps = new ArrayList<>();
 
-    @OneToMany(mappedBy = "recepie", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    @OneToMany(mappedBy = "recepie", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<Rating> ratings = new ArrayList<>();
 
     private LocalDateTime deletedAt;
