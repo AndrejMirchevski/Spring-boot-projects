@@ -1,5 +1,6 @@
 package com.example.RecipeBookAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,7 @@ public class Ingredient {
     private Double quantity;
     private String unit;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
