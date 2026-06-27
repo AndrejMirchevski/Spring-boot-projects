@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CandidateRepository extends JpaRepository<Long, Candidate> {
+public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     Optional<Candidate> findByDeletedAtIsNull(Long id);
 
     Optional<Candidate> findByEmailAndDeletedAtIsNull(String email);
 
-        Page<Candidate> findDeletedAtIsNull(Pageable pageable);
+    Page<Candidate> findDeletedAtIsNull(Pageable pageable);
+
+    Candidate findByIdAndDeletedIsNull(Long id);
 }
